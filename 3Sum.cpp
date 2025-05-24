@@ -16,25 +16,24 @@ public:
             if(i>0 && nums[i] == nums[i-1]){
                 continue;
             }
-            else{
-                int low = i+1, high = n-1;
-                while(low < high){
-                    int sum = nums[i] + nums[low] + nums[high];
+            
+            int low = i+1, high = n-1;
+            while(low < high){
+                int sum = nums[i] + nums[low] + nums[high];
 
-                    if(sum == 0){
-                        result.push_back({nums[i], nums[low], nums[high]});
-                        low++;
+                if(sum == 0){
+                    result.push_back({nums[i], nums[low], nums[high]});
+                    low++;
 
-                        while(nums[low] == nums[low-1] && low<high){
-                            low++;
-                        }
-                    }
-                    else if(sum < 0){
+                    while(nums[low] == nums[low-1] && low<high){
                         low++;
                     }
-                    else{
-                        high--;
-                    }
+                }
+                else if(sum < 0){
+                    low++;
+                }
+                else{
+                    high--;
                 }
             }
         }
